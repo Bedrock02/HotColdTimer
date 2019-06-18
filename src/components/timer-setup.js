@@ -5,8 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare, faMinusSquare } from '@fortawesome/free-solid-svg-icons'
 
 const tempContainerStyles = {
-  width: '75%'
+  width: '75%',
+  '-webkit-user-select': 'none',
+  '-moz-user-select': 'none',
+  '-ms-user-select': 'none',
+  'user-select': 'none',
 };
+
 const tempSettingStyles = {
   alignItems: 'center',
   display: 'flex',
@@ -32,23 +37,39 @@ class TimerSetup extends React.Component {
     }
     return `${minutes_format}:${seconds_format}`;
   }
+  handleChange(event, temp, change) {
+    event.stopPropagation();
+    if( (temp === 'hot' && this.state.hot > 0) || (this.state.hot === 0 && change > 0) ) {
+      this.setState({hot: this.state.hot + change});
+    } else if( (temp === 'cold' && this.state.cold > 0) || (this.state.cold === 0 && change > 0)) {
+      this.setState({cold: this.state.cold + change});
+    }
+  }
   render() {
     return(
       <>
       <div className='temp-setting' style={tempContainerStyles}>
         <h3>Hot Time</h3>
-        <div class="temp-options" style={tempSettingStyles}>
-          <FontAwesomeIcon icon={faMinusSquare} />
+        <div className="temp-options" style={tempSettingStyles}>
+          <div>
+            <FontAwesomeIcon icon={faMinusSquare} onClick={(e) => {this.handleChange(e, 'hot', -5)}}/>
+          </div>
           <h2>{this.formatTime(this.state.hot)}</h2>
-          <FontAwesomeIcon icon={faPlusSquare} />
+          <div>
+            <FontAwesomeIcon icon={faPlusSquare} onClick={(e) => {this.handleChange(e, 'hot', 5)}}/>
+          </div>
         </div>
       </div>
       <div className='temp-setting' style={tempContainerStyles}>
         <h3>Cold Time</h3>
-        <div class="temp-options" style={tempSettingStyles}>
-          <FontAwesomeIcon icon={faMinusSquare} />
+        <div className="temp-options" style={tempSettingStyles}>
+          <div>
+            <FontAwesomeIcon icon={faMinusSquare} onClick={(e) => {this.handleChange(e, 'cold', -5)}}/>
+          </div>
           <h2>{this.formatTime(this.state.cold)}</h2>
-          <FontAwesomeIcon icon={faPlusSquare} />
+          <div>
+            <FontAwesomeIcon icon={faPlusSquare} onClick={(e) => {this.handleChange(e, 'cold', 5)}}/>
+          </div>
         </div>
       </div>
       </>
