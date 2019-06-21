@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import 'moment-timer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusSquare, faMinusSquare, faSnowflake, faFire } from '@fortawesome/free-solid-svg-icons'
+import { faPlusSquare, faMinusSquare, faSnowflake, faFire, faPlay } from '@fortawesome/free-solid-svg-icons'
 import TimerSetupStyles from './styles';
 
 class TimerSetup extends React.Component {
@@ -64,7 +64,7 @@ class TimerSetup extends React.Component {
         </div>
 
         <button style={TimerSetupStyles.button}>
-          <h1>START</h1>
+          <span>START</span>
         </button>
       </>
     );
