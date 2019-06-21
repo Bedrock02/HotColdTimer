@@ -1,4 +1,4 @@
-const Landing = {
+const LandingStyles = {
   iconContainer: {
     display: 'flex',
     width: '50%',
@@ -14,4 +14,4 @@ const Landing = {
 	  animation: 'shake-horizontal 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both',
   }
 }
-export default Landing;
+export default LandingStyles;
