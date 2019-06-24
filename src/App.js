@@ -17,6 +17,7 @@ class App extends React.Component {
       rounds: 4,
     }
     this.onTimeChange = this.onTimeChange.bind(this);
+    this.onRoundsChange = this.onRoundsChange.bind(this);
   }
   onTimeChange(event, temp, change) {
     event.stopPropagation();
@@ -41,6 +42,7 @@ class App extends React.Component {
             <TimerContext.Provider value={{
               state: this.state,
               onTimeChange: this.onTimeChange,
+              onRoundsChange: this.onRoundsChange,
             }}>
               <Router>
                 <Route path="/" exact component={Landing} />

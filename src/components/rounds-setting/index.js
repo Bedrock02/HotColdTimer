@@ -6,6 +6,11 @@ import RoundsSettingStyles from './styles';
 
 class RoundsSetting extends React.Component {
     static contextType = TimerContext;
+    constructor(props) {
+      super(props);
+      this.subtractRound = this.subtractRound.bind(this);
+      this.addRound = this.addRound.bind(this);
+    }
     subtractRound() {
       this.context.onRoundsChange(-1);
     }
@@ -17,11 +22,11 @@ class RoundsSetting extends React.Component {
         <div className="container">
           <FontAwesomeIcon icon={faSyncAlt} color="#ffffff" style={RoundsSettingStyles.icon}/>
           <div className="options" style={RoundsSettingStyles.options}>
-            <div>
+            <div className="button-icon" style={RoundsSettingStyles.buttonIcon}>
               <FontAwesomeIcon icon={faMinusSquare} onClick={this.subtractRound}/>
             </div>
-            <h2>{this.context.state.rounds}</h2>
-            <div>
+            <h2 className="data-item" style={RoundsSettingStyles.dataItem}>{this.context.state.rounds} x</h2>
+            <div className="button-icon" style={RoundsSettingStyles.buttonIcon}>
               <FontAwesomeIcon icon={faPlusSquare} onClick={this.addRound}/>
             </div>
           </div>

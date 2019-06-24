@@ -11,6 +11,12 @@ const RoundsSettingStyles = {
   icon: {
     fontSize: '1.7em',
   },
+  buttonIcon: {
+    cursor: 'pointer',
+  },
+  dataItem: {
+    width: '240px',
+  }
 };
 
 export default RoundsSettingStyles;

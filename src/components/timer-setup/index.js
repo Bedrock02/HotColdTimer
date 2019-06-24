@@ -11,11 +11,9 @@ class TimerSetup extends React.Component {
           <TempSetting temp='cold' />
           <RoundsSetting />
         </div>
-        <div style={TimerSetupStyles.button}>
-          <button>
-            <span>START</span>
-          </button>
-        </div>
+        <button style={TimerSetupStyles.button}>
+          <span>START</span>
+        </button>
       </>
     );
   }

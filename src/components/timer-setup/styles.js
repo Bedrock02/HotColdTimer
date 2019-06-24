@@ -3,8 +3,9 @@ const TimerSetupStyles = {
     width: '100%',
     height: '100px',
     backgroundColor: '#FFFFFF',
-    fontSize: '1.5em',
+    fontSize: '1.2em',
     padding: '0',
+    cursor: 'pointer',
   },
   settings: {
     width: '75vw',

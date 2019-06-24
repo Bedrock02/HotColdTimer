@@ -32,11 +32,11 @@ class TempSetting extends React.Component {
       <div className="container" style={TempSettingStyles.container}>
         {tempIcon}
         <div className="options" style={TempSettingStyles.options}>
-          <div>
+          <div className="button-icon" style={TempSettingStyles.buttonIcon}>
             <FontAwesomeIcon icon={faMinusSquare} onClick={(e) => {this.context.onTimeChange(e, this.state.temp, -5)}}/>
           </div>
-          <h2>{this.formatTime(this.context.state[this.state.temp])}</h2>
-          <div>
+          <h2 className="data-item" style={TempSettingStyles.dataItem}>{this.formatTime(this.context.state[this.state.temp])}</h2>
+          <div className="button-icon" style={TempSettingStyles.buttonIcon}>
             <FontAwesomeIcon icon={faPlusSquare} onClick={(e) => {this.context.onTimeChange(e, this.state.temp, 5)}}/>
           </div>
         </div>
