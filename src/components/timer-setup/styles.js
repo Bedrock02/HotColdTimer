@@ -7,6 +7,7 @@ const TimerSetupStyles = {
     padding: '0',
     cursor: 'pointer',
   },
+
   settings: {
     width: '75vw',
     WebkitUserSelect: 'none',
@@ -18,6 +19,30 @@ const TimerSetupStyles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
+  },
+
+  // Children Component Styles
+  container: {
+    paddingTop: '5%',
+    paddingBottom: '5%',
+  },
+
+  icon: {
+    fontSize: '1.7em',
+  },
+
+  buttonIcon: {
+    cursor: 'pointer',
+  },
+
+  options: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'space-around',
+  },
+
+  dataItem: {
+    width: '240px',
   }
 };
 

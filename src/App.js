@@ -3,8 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import TimerSetup from './components/timer-setup/';
 import Landing from './components/landing/';
+import Therapy from './components/therapy';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import TimerContext from './timer-context';
+import { ActivitiesEnum } from './utilities/constants';
+import GlobalStyles from './global-styles';
 
 const state = {cold: 60, hot: 180};
 
@@ -15,9 +18,11 @@ class App extends React.Component {
       cold: 60,
       hot: 180,
       rounds: 4,
+      activity: ActivitiesEnum.SETUP,
     }
     this.onTimeChange = this.onTimeChange.bind(this);
     this.onRoundsChange = this.onRoundsChange.bind(this);
+    this.setActivity = this.setActivity.bind(this);
   }
   onTimeChange(event, temp, change) {
     event.stopPropagation();
@@ -33,20 +38,26 @@ class App extends React.Component {
     }
     this.setState({rounds: this.state.rounds + change});
   }
+  setActivity(newActivity) {
+    this.setState({activity: newActivity});
+  }
   render() {
+
     return (
       <>
         <link rel="stylesheet" href="animate.min.css" />
         <div className="App">
-          <header className="App-header">
+          <header className="App-header" style={GlobalStyles[`${this.state.activity}`]}>
             <TimerContext.Provider value={{
               state: this.state,
               onTimeChange: this.onTimeChange,
               onRoundsChange: this.onRoundsChange,
+              setActivity: this.setActivity,
             }}>
               <Router>
                 <Route path="/" exact component={Landing} />
                 <Route path="/setup" exact component={TimerSetup} />
+                <Route path="/therapy" exact component={Therapy} />
               </Router>
             </TimerContext.Provider>
           </header>

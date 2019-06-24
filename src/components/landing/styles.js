@@ -2,7 +2,6 @@
 const LandingStyles = {
   iconContainer: {
     display: 'flex',
-    width: '50%',
     justifyContent: 'space-evenly',
     fontSize: '2em',
   },

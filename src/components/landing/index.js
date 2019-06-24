@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 class Landing extends React.Component {
   render() {
     return(
-      <div style={{display: 'contents'}} onClick={() => { window.location.href = '/setup/';}}>
+      <div onClick={() => { window.location.href = '/setup/';}}>
         <div style={LandingStyles.iconContainer}>
           <div>
             <FontAwesomeIcon style={LandingStyles.fire} icon={faFire} color="#c1271d"/>

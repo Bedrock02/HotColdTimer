@@ -1,7 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusSquare, faMinusSquare, faSnowflake, faFire } from '@fortawesome/free-solid-svg-icons'
-import TempSettingStyles from './styles';
 import TimerContext from '../../timer-context';
 
 class TempSetting extends React.Component {
@@ -24,19 +23,20 @@ class TempSetting extends React.Component {
   }
 
   render() {
+    const { componentStyles } = this.props;
     const tempIcon = this.state.temp === 'hot' ?
-    (<FontAwesomeIcon icon={faFire} color="#c1271d" style={TempSettingStyles.icon}/>) :
-    (<FontAwesomeIcon icon={faSnowflake} color="#1bb1ef" style={TempSettingStyles.icon}/>);
+    (<FontAwesomeIcon icon={faFire} color="#c1271d" style={componentStyles.icon}/>) :
+    (<FontAwesomeIcon icon={faSnowflake} color="#1bb1ef" style={componentStyles.icon}/>);
 
     return(
-      <div className="container" style={TempSettingStyles.container}>
+      <div className="container" style={componentStyles.container}>
         {tempIcon}
-        <div className="options" style={TempSettingStyles.options}>
-          <div className="button-icon" style={TempSettingStyles.buttonIcon}>
+        <div className="options" style={componentStyles.options}>
+          <div className="button-icon" style={componentStyles.buttonIcon}>
             <FontAwesomeIcon icon={faMinusSquare} onClick={(e) => {this.context.onTimeChange(e, this.state.temp, -5)}}/>
           </div>
-          <h2 className="data-item" style={TempSettingStyles.dataItem}>{this.formatTime(this.context.state[this.state.temp])}</h2>
-          <div className="button-icon" style={TempSettingStyles.buttonIcon}>
+          <h2 className="data-item" style={componentStyles.dataItem}>{this.formatTime(this.context.state[this.state.temp])}</h2>
+          <div className="button-icon" style={componentStyles.buttonIcon}>
             <FontAwesomeIcon icon={faPlusSquare} onClick={(e) => {this.context.onTimeChange(e, this.state.temp, 5)}}/>
           </div>
         </div>
