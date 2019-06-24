@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSnowflake, faFire, faPlus } from '@fortawesome/free-solid-svg-icons'
 import LandingStyles from './styles';
 import { Link } from "react-router-dom";
+import { ActivitiesEnum } from '../../utilities/constants';
+import TimerContext from '../../timer-context';
 
 class Landing extends React.Component {
+  static contextType = TimerContext;
   render() {
     return(
-      <div onClick={() => { window.location.href = '/setup/';}}>
+      <Link to='/setup/' style={LandingStyles.container}>
         <div style={LandingStyles.iconContainer}>
           <div>
             <FontAwesomeIcon style={LandingStyles.fire} icon={faFire} color="#c1271d"/>
@@ -20,7 +23,7 @@ class Landing extends React.Component {
           </div>
         </div>
         <h1>Therapy</h1>
-      </div>
+      </Link>
     );
   }
 }

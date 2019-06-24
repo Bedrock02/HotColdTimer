@@ -18,6 +18,19 @@
   color: white;
 }
 
+.setup {
+  background-color: #282c34;
+}
+.landing {
+  background-color: #282c34;
+}
+.hot-session {
+  background-color: #c1271d;
+}
+.cold-session {
+  background-color: #1bb1ef;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -29,4 +42,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

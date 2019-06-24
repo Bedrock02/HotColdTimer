@@ -2,10 +2,16 @@ import React from 'react'
 import TimerSetupStyles from './styles';
 import TempSetting from '../temp-setting/';
 import RoundsSetting from '../rounds-setting/';
+import TimerContext from '../../timer-context';
+import { ActivitiesEnum } from '../../utilities/constants';
+import { Link } from "react-router-dom";
+
 class TimerSetup extends React.Component {
-  handleStart() {
-    window.location.href = '/therapy/';
+  static contextType = TimerContext;
+  componentDidMount() {
+    this.context.setActivity(ActivitiesEnum.SETUP);
   }
+
   render() {
     return(
       <>
@@ -14,9 +20,9 @@ class TimerSetup extends React.Component {
           <TempSetting temp='cold' componentStyles={TimerSetupStyles}/>
           <RoundsSetting componentStyles={TimerSetupStyles}/>
         </div>
-        <button style={TimerSetupStyles.button} onClick={this.handleStart}>
-          <span>START</span>
-        </button>
+        <Link to='/therapy/' style={TimerSetupStyles.button}>
+          <p style={TimerSetupStyles.buttonText}>START</p>
+        </Link>
       </>
     );
   }

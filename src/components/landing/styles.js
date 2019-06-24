@@ -1,5 +1,13 @@
 // Animation is from Animista
 const LandingStyles = {
+  container: {
+    height: '80vh',
+    width: '80vw',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    cursor: 'pointer',
+  },
   iconContainer: {
     display: 'flex',
     justifyContent: 'space-evenly',

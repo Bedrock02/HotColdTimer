@@ -3,11 +3,14 @@ const TimerSetupStyles = {
     width: '100%',
     height: '100px',
     backgroundColor: '#FFFFFF',
-    fontSize: '1.2em',
-    padding: '0',
-    cursor: 'pointer',
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'column',
   },
-
+  buttonText: {
+    fontSize: '1em',
+    color: '#000000',
+  },
   settings: {
     width: '75vw',
     WebkitUserSelect: 'none',

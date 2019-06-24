@@ -2,6 +2,9 @@ const GlobalStyles ={
   setup: {
     backgroundColor: '#282c34',
   },
+  landing: {
+    backgroundColor: '#282c34',
+  },
   'hot-session': {
     backgroundColor: "#c1271d",
   },

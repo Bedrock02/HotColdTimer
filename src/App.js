@@ -18,7 +18,7 @@ class App extends React.Component {
       cold: 60,
       hot: 180,
       rounds: 4,
-      activity: ActivitiesEnum.SETUP,
+      activity: ActivitiesEnum.LANDING,
     }
     this.onTimeChange = this.onTimeChange.bind(this);
     this.onRoundsChange = this.onRoundsChange.bind(this);
@@ -47,7 +47,7 @@ class App extends React.Component {
       <>
         <link rel="stylesheet" href="animate.min.css" />
         <div className="App">
-          <header className="App-header" style={GlobalStyles[`${this.state.activity}`]}>
+          <header className={`App-header ${this.state.activity}`}>
             <TimerContext.Provider value={{
               state: this.state,
               onTimeChange: this.onTimeChange,
