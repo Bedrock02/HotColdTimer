@@ -14,6 +14,7 @@ class App extends React.Component {
     this.state = {
       cold: 60,
       hot: 180,
+      rounds: 4,
     }
     this.onTimeChange = this.onTimeChange.bind(this);
   }
@@ -24,6 +25,12 @@ class App extends React.Component {
     } else if( (temp === 'cold' && this.state.cold > 0) || (this.state.cold === 0 && change > 0)) {
       this.setState({cold: this.state.cold + change});
     }
+  }
+  onRoundsChange(change) {
+    if(this.state.rounds + change <= 0) {
+      return
+    }
+    this.setState({rounds: this.state.rounds + change});
   }
   render() {
     return (

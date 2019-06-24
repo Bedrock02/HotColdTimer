@@ -1,4 +1,4 @@
-const TempSettingStyles = {
+const RoundsSettingStyles = {
   container: {
     paddingTop: '5%',
     paddingBottom: '5%',
@@ -8,10 +8,9 @@ const TempSettingStyles = {
     display: 'flex',
     justifyContent: 'space-around',
   },
-
   icon: {
     fontSize: '1.7em',
   },
 };
 
-export default TempSettingStyles;
+export default RoundsSettingStyles;

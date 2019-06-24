@@ -29,9 +29,9 @@ class TempSetting extends React.Component {
     (<FontAwesomeIcon icon={faSnowflake} color="#1bb1ef" style={TempSettingStyles.icon}/>);
 
     return(
-      <div className='temp-setting' style={TempSettingStyles.container}>
+      <div className="container" style={TempSettingStyles.container}>
         {tempIcon}
-        <div className="temp-options" style={TempSettingStyles.settings}>
+        <div className="options" style={TempSettingStyles.options}>
           <div>
             <FontAwesomeIcon icon={faMinusSquare} onClick={(e) => {this.context.onTimeChange(e, this.state.temp, -5)}}/>
           </div>
