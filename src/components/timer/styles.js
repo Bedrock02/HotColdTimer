@@ -1,4 +1,4 @@
-const TherapyStyles = {
+const TimerStyles = {
   container: {
     height: '100vh',
     width: '75vw',
@@ -28,4 +28,4 @@ const TherapyStyles = {
   }
 }
 
-export default TherapyStyles;
+export default TimerStyles;

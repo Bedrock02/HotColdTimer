@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import TimerSetup from './components/timer-setup/';
 import Landing from './components/landing/';
-import Therapy from './components/therapy';
+import Timer from './components/timer';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import TimerContext from './timer-context';
 import { ActivitiesEnum } from './utilities/constants';
@@ -57,7 +57,7 @@ class App extends React.Component {
               <Router>
                 <Route path="/" exact component={Landing} />
                 <Route path="/setup" exact component={TimerSetup} />
-                <Route path="/therapy" exact component={Therapy} />
+                <Route path="/timer" exact component={Timer} />
               </Router>
             </TimerContext.Provider>
           </header>
