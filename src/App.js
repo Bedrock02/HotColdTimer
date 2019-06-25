@@ -15,14 +15,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cold: 60,
-      hot: 180,
+      cold: 60000,
+      hot: 180000,
       rounds: 4,
       activity: ActivitiesEnum.LANDING,
     }
     this.onTimeChange = this.onTimeChange.bind(this);
     this.onRoundsChange = this.onRoundsChange.bind(this);
     this.setActivity = this.setActivity.bind(this);
+    this.getTotalTime = this.getTotalTime.bind(this);
   }
   onTimeChange(event, temp, change) {
     event.stopPropagation();
@@ -41,6 +42,9 @@ class App extends React.Component {
   setActivity(newActivity) {
     this.setState({activity: newActivity});
   }
+  getTotalTime(){
+    return (this.state.cold + this.state.hot) * this.state.rounds;
+  }
   render() {
 
     return (
@@ -53,6 +57,7 @@ class App extends React.Component {
               onTimeChange: this.onTimeChange,
               onRoundsChange: this.onRoundsChange,
               setActivity: this.setActivity,
+              getTotalTime: this.getTotalTime,
             }}>
               <Router>
                 <Route path="/" exact component={Landing} />

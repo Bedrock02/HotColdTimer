@@ -20,7 +20,7 @@ class TimerSetup extends React.Component {
           <TempSetting temp='cold' componentStyles={TimerSetupStyles}/>
           <RoundsSetting componentStyles={TimerSetupStyles}/>
         </div>
-        <Link to='/therapy/' style={TimerSetupStyles.button}>
+        <Link to='/timer/' style={TimerSetupStyles.button}>
           <p style={TimerSetupStyles.buttonText}>START</p>
         </Link>
       </>

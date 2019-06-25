@@ -10576,6 +10576,11 @@ tiny-relative-date@^1.3.0:
   resolved "https://registry.yarnpkg.com/tiny-relative-date/-/tiny-relative-date-1.3.0.tgz#fa08aad501ed730f31cc043181d995c39a935e07"
   integrity sha512-MOQHpzllWxDCHHaDno30hhLfbouoYlOI8YlMNtvKe1zXbjEVhbcEovQxvZrPvtiYW630GQDoMMarCnjfyfHA+A==
 
+tiny-timer@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/tiny-timer/-/tiny-timer-1.3.0.tgz#2185f64f87000d234317d8a18a833e7d0506ce58"
+  integrity sha512-Lg39a7AAGItP/MQpV0U7dN/0WCisKx+kwaD2Ja/PcRCfbskhuo1Aqg0dyiIrvWutWov78hdwdtvsxav+UqQ5PQ==
+
 tiny-warning@^1.0.0, tiny-warning@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.2.tgz#1dfae771ee1a04396bdfde27a3adcebc6b648b28"

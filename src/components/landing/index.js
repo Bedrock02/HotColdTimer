@@ -22,7 +22,7 @@ class Landing extends React.Component {
             <FontAwesomeIcon style={LandingStyles.snowflake} icon={faSnowflake} color="#1bb1ef"/>
           </div>
         </div>
-        <h1>Therapy</h1>
+        <h1>Timer</h1>
       </Link>
     );
   }

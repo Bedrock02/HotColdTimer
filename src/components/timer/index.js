@@ -2,9 +2,11 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TimerStyles from './styles.js';
 import TimerContext from '../../timer-context';
-import { ActivitiesEnum } from '../../utilities/constants';
+import { ActivitiesEnum, TimerStatesEnum } from '../../utilities/constants';
 import { formatTime } from '../../utilities/helpers';
 import { Link } from "react-router-dom";
+import TinyTimer from 'tiny-timer';
+
 import {
   faSnowflake,
   faFire,
@@ -19,55 +21,115 @@ class Timer extends React.Component {
   static contextType = TimerContext;
   constructor(props) {
     super(props);
-    this.TIMER_STATES = {
-      PLAYING: 'playing',
-      IDLE: 'idle',
-    };
     this.state = {
       totalTime: 0,
       sessionTime: 0,
-      timerState: this.TIMER_STATES.IDLE,
+      timerState: TimerStatesEnum.IDLE,
     }
 
     this.startTimer = this.startTimer.bind(this);
     this.pauseTimer = this.pauseTimer.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
+    this.onTick = this.onTick.bind(this);
+    this.onDone = this.onDone.bind(this);
   }
   componentDidMount() {
+    this.timer = new TinyTimer();
+    this.timer.on('tick', this.onTick);
+    this.timer.on('done', this.onDone);
     this.context.setActivity(ActivitiesEnum.HOT_SESSION);
-    const { cold, hot, rounds } = this.context.state;
-    const totalTime = (cold + hot) * rounds;
-    this.setState({totalTime, sessionTime: hot});
+    this.setState({
+      totalTime: this.context.getTotalTime(),
+      sessionTime: this.context.state.hot
+    });
+  }
+  componentWillUnmount() {
+    const { timerState } = this.state;
+    if(timerState === TimerStatesEnum.PLAYING) {
+        this.timer.stop();
+    }
+    delete this.timer;
   }
 
+  onTick() {
+    const { sessionTime, totalTime } = this.state;
+    if(sessionTime === 0) {
+      return;
+    }
+    this.setState({
+      sessionTime: sessionTime - 1000,
+      totalTime: totalTime - 1000,
+    });
+  }
+  onDone() {
+    const { totalTime } = this.state;
+    const { activity, cold, hot } = this.context.state;
+    if(totalTime === 0) {
+      this.setState({timerState: TimerStatesEnum.DONE});
+      return
+    }
+    let nextSession, nextDuration;
+    if(activity === ActivitiesEnum.HOT_SESSION) {
+      nextSession = ActivitiesEnum.COLD_SESSION;
+      nextDuration = cold;
+    } else {
+      nextSession = ActivitiesEnum.HOT_SESSION;
+      nextDuration = hot;
+    }
+    this.context.setActivity(nextSession);
+    this.setState({sessionTime: nextDuration});
+    this.startTimer();
+  }
   startTimer() {
-    this.setState({timerState: this.TIMER_STATES.PLAYING});
+    const { timerState, sessionTime } = this.state;
+    if(timerState === TimerStatesEnum.DONE) {
+      return;
+    }
+    this.setState({timerState: TimerStatesEnum.PLAYING});
+    if(this.timer.status === 'paused') {
+      this.timer.resume();
+      return
+    }
+    this.timer.start(sessionTime);
   }
   pauseTimer() {
-    this.setState({timerState: this.TIMER_STATES.IDLE});
+    this.setState({timerState: TimerStatesEnum.IDLE});
+    this.timer.pause();
   }
   resetTimer(){
-    this.setState({timerState: this.TIMER_STATES.IDLE});
+    const { timerState } = this.state;
+    if(timerState === TimerStatesEnum.PLAYING) {
+      this.timer.stop()
+    }
+    this.context.setActivity(ActivitiesEnum.HOT_SESSION);
+    this.setState({
+      timerState: TimerStatesEnum.IDLE,
+      totalTime: this.context.getTotalTime(),
+      sessionTime: this.context.state.hot
+    });
   }
   render() {
-    const timerAction = this.state.timerState === this.TIMER_STATES.PLAYING ?
+    const { timerState, sessionTime, totalTime } = this.state;
+    const { activity } = this.context.state;
+    const timerAction = timerState === TimerStatesEnum.PLAYING ?
       (<FontAwesomeIcon icon={faPause} color="#ffffff" onClick={this.pauseTimer} />) :
       (<FontAwesomeIcon icon={faPlay} color="#ffffff" onClick={this.startTimer} />);
+    const tempIcon = activity === ActivitiesEnum.HOT_SESSION ? faFire : faSnowflake;
     return(
       <>
         <div style={TimerStyles.container}>
           <div style={TimerStyles.currentTemp}>
             <FontAwesomeIcon icon={faStopwatch} color="#ffffff"/>
-            <p>{formatTime(this.state.sessionTime)}</p>
+            <p>{formatTime(sessionTime)}</p>
           </div>
-          <FontAwesomeIcon style={TimerStyles.mainIcon} icon={faFire} color="#ffffff"/>
+          <FontAwesomeIcon style={TimerStyles.mainIcon} icon={tempIcon} color="#ffffff"/>
           <div style={TimerStyles.totalTime}>
             <p>Time Left</p>
-            <p>{formatTime(this.state.totalTime)}</p>
+            <p>{formatTime(totalTime)}</p>
           </div>
         </div>
 
-        <div className="timer-actions" style={TimerStyles.therapyActions}>
+        <div className="timer-actions" style={TimerStyles.timerActions}>
           <Link to='/setup/'>
             <FontAwesomeIcon icon={faChevronLeft} color="#ffffff"/>
           </Link>

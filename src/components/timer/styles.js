@@ -16,7 +16,7 @@ const TimerStyles = {
   totalTime: {
     fontSize: '2em',
   },
-  therapyActions: {
+  timerActions: {
     display: 'flex',
     width: '75vw',
     flexDirection: 'row',
