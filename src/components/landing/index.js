@@ -12,17 +12,11 @@ class Landing extends React.Component {
     return(
       <Link to='/setup/' style={LandingStyles.container}>
         <div style={LandingStyles.iconContainer}>
-          <div>
-            <FontAwesomeIcon style={LandingStyles.fire} icon={faFire} color="#c1271d"/>
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faPlus} color="#ffffff"/>
-          </div>
-          <div>
-            <FontAwesomeIcon style={LandingStyles.snowflake} icon={faSnowflake} color="#1bb1ef"/>
-          </div>
+          <FontAwesomeIcon style={LandingStyles.fire} icon={faFire} color="#c1271d"/>
         </div>
-        <h1>Therapy</h1>
+        <div style={LandingStyles.iconContainer}>
+          <FontAwesomeIcon style={LandingStyles.snowflake} icon={faSnowflake} color="#1bb1ef"/>
+        </div>
       </Link>
     );
   }
