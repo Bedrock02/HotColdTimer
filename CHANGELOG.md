@@ -1,3 +1,6 @@
+## 0.4.0 (July 09, 2019)
+  - Manifest Change
+
 ## 0.3.0 (July 09, 2019)
   - Added Favicons & Modified Manifest
 
