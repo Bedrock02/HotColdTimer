@@ -1,3 +1,7 @@
+## 0.2.0 (July 09, 2019)
+  - Register Service Worker
+  - Release 0.1.0
+
 ## 0.1.0 (July 09, 2019)
   - add bump version script
   - Timer Finished, Removed use of 'Therapy', Moment, Milliseconds
