@@ -1,3 +1,6 @@
+## 0.3.0 (July 09, 2019)
+  - Added Favicons & Modified Manifest
+
 ## 0.2.0 (July 09, 2019)
   - Register Service Worker
   - Release 0.1.0
