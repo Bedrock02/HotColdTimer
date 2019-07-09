@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Hot & Cold Timer",
+  "name": "Hot & Cold Timer",
   "icons": [
     {
       "src": "images/favicon-16x16.png",
